@@ -1,5 +1,5 @@
 
-:warning: :warning: :warning: Experimental - **PLEASE BE CAREFUL**. Intended for Reasearch purposes ONLY. :warning: :warning: :warning:
+:warning: :warning: :warning: Experimental - **PLEASE BE CAREFUL**. Intended for Research purposes ONLY. :warning: :warning: :warning:
 
 This repository contains code and data of the paper **GANDaLF: GAN for Data-Limited Fingerprinting**, to be appeared in **Privacy Enhancing Technologies Symposium (PETS) 2021**.
 [Read the Paper]().
@@ -20,7 +20,7 @@ The following is [circuit_label, mean_loading_time] of these circuit groups.
 4 fast groups: [[16, 27.838683811790737], [27, 27.880973149853084], [8, 27.951370530079572], [26, 27.981911256391193]]
 ```                          
 
-- GDLF(gdlf25_ipd.npz, gdlf_ow_ipd.npz, gdlf25_ow_old_ipd.npz): We collected 25 sites x 96 subpages x 39 instances (gdlf25_ipd.npz) and 70000 x 1 instances (gdlf_ow_ipd.npz). For each of them, we extracted IPD sequences. gdlf25_ow_old_ipd.npz was collected around 3 months prior to gdlf_ow_ipd.npz. The entire set consisting of each trace file formatted in <time_stamp>\t<packet_size> can provided upon request.
+- GDLF(gdlf25_ipd.npz, gdlf_ow_ipd.npz, gdlf25_ow_old_ipd.npz): We collected 25 sites x 96 subpages x 39 instances (gdlf25_ipd.npz) and 70000 x 1 instances (gdlf_ow_ipd.npz). For each of them, we extracted IPD sequences. gdlf25_ow_old_ipd.npz was collected around 3 months prior to gdlf_ow_ipd.npz. The entire set consisting of each trace file formatted in <time_stamp>\t<packet_size> can be provided upon request.
 
 ### Dependencies, Required Hardware (HW), and Software (SW) packages
 
@@ -62,7 +62,7 @@ mkdir ~/ssl_saved_model
 
 ## Usage
 
-Note that since the code randomly selects a small labeled set and a testing set for each iteration, std is relatively greater. Thus, we recommend to use at least five iterations and compute the mean value of their results especially for lower number of instances (i.e., 5-20 instances). Highly recommend to use 10 iterations to evaluate GANDaLF. 
+Note that since the code randomly selects a small labeled set and a testing set for each iteration, std is relatively greater. Thus, we recommend to use at least five iterations and compute the mean value of their results especially for a lower number of instances (i.e., 5-20 instances). Highly recommend to use 10 iterations to evaluate GANDaLF. 
 
 ### WF-I closed-world experiments ([wfi/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfi#cw-experiments-using-510205090-instances))
 
