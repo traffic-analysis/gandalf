@@ -4,7 +4,7 @@
 This repository contains code and data of the paper **GANDaLF: GAN for Data-Limited Fingerprinting**, to be appeared in **Privacy Enhancing Technologies Symposium (PETS) 2021**.
 [Read the Paper]().
 
-Code of this paper is written using Keras with TensorFlow backend. 
+Code of this paper is written using Python3 and TensorFlow. 
 
 ### Dataset description
 
