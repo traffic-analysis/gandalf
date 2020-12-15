@@ -64,7 +64,7 @@ mkdir ~/ssl_saved_model
 
 Note that since the code randomly selects a small labeled set and a testing set for each iteration, std is relatively greater. Thus, we recommend to use at least five iterations and compute the mean value of their results especially for lower number of instances (i.e., 5-20 instances). Highly recommend to use 10 iterations to evaluate GANDaLF. 
 
-### WF-I closed-world experiments ([wfi/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfi#cw-experiments-using-5102050-instances))
+### WF-I closed-world experiments ([wfi/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfi#cw-experiments-using-510205090-instances))
 
 ### WF-I open-world experiments ([wfi/ow](https://github.com/traffic-analysis/gandalf/tree/main/wfi#ow-training-using-20-instances))
 
