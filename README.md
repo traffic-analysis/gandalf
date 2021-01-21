@@ -2,7 +2,7 @@
 :warning: :warning: :warning: Experimental - **PLEASE BE CAREFUL**. Intended for Research purposes ONLY. :warning: :warning: :warning:
 
 This repository contains code and data of the paper **GANDaLF: GAN for Data-Limited Fingerprinting**, to be appeared in **Privacy Enhancing Technologies Symposium (PETS) 2021**.
-[Read the Paper]().
+[Read the Paper (url is not available yet)]().
 
 Code of this paper is written using Python3 and TensorFlow. 
 
