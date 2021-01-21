@@ -45,8 +45,9 @@ python3 -m venv ~/gdlf_env
 Install prerequisite:
 
 ```sh
-source gdlf_env/bin/activate
+source ~/gdlf_env/bin/activate
 pip install -r requirements.txt
+deactivate
 ```
 
 We used Tensorflow 1.13.0 and this version generated some warning messages that (type, 1) is deprecated and The graph couldn't be sorted in topological order. 
