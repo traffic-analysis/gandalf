@@ -99,7 +99,7 @@ To test our pretrained model used in the paper, download [model](https://docs.go
 
 Code locates at ~/gandalf/wfi/circuit/wfi-circuit-div.py
 
-This code trains the model using 25 instances of 95 sites collected by different number of circuits (i.e.,num_train_circuits) and tests the model using 100 instances of 95 sites in the closed-world setting.
+This code trains the model using 25 instances of 95 sites collected by different number of circuits (i.e.,num_train_circuits) and tests the model using 100 instances of 95 sites collected by all circuits in the closed-world setting.
 
 | Data  | Set | Size |
 | ------------- | ------------- | ------------- |
