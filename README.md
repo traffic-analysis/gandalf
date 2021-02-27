@@ -61,6 +61,8 @@ mkdir ~/datasets
 mkdir ~/ssl_saved_model
 ```
 
+But if you want to use your preferred locations rather than the home directory, use the options (i.e., --data_root and --model_root) to pass these locations when executing codes.
+
 ## Usage
 
 Note that since the code randomly selects a small labeled set and a testing set for each iteration, std is relatively greater. Thus, we recommend to use at least five iterations and compute the mean value of their results especially for a lower number of instances (i.e., 5-20 instances). Highly recommend to use 10 iterations to evaluate GANDaLF. 
@@ -68,11 +70,12 @@ Note that since the code randomly selects a small labeled set and a testing set 
 Clone github repository:
 
 ```sh
-cd
 git clone https://github.com/traffic-analysis/gandalf.git
 ```
 
 Then, you are ready to execute the following codes.
+
+The following codes first preprocess the input data including building labeled and unlabeled data as well as splitting them into training and testing sets. Then, they build the network to have the generator and discriminator followed by building the loss functions for the discriminator and generator. Note that the discriminator is trained using both supervised loss (i.e., categorical cross entropy) and unsupervised loss while the generator is trained using the feature matching loss computing MAE (or MSE) between fake and real traces. Finally both models are trained using two optimizers (i.e., Adam) and the trained model is evaluated using the testing set. For OW, we provide separate evaluation code. while  For more details regarding the code execution and data, refer to the following links: 
 
 ### WF-I closed-world experiments ([wfi/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfi#cw-experiments-using-510205090-instances))
 

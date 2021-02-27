@@ -203,9 +203,9 @@ def main(args):
 
         saver = tf.train.Saver()
         with tf.Session() as sess:
-            saver.restore (sess, save_path=args.model_path)  # wfs-ow90.ckpt')
+            saver.restore (sess, save_path=args.model_root + args.model_path)  # wfs-ow90.ckpt')
             print("...saved model restored successfully!")
-            test = np.load (args.test_path, allow_pickle=True)
+            test = np.load (args.data_root + args.test_path, allow_pickle=True)
             def reshape_and_scale(x, img_shape=(-1, dim, 1)):
                 return x.reshape(img_shape).astype(np.float32)
             test_x_data = reshape_and_scale(test['X'])
@@ -318,8 +318,10 @@ if __name__ == "__main__":
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=90)
     parser.add_argument ('--back_size', required=False, default=70000)
-    parser.add_argument ('--model_path', required=False, default=HOME + '/ssl_saved_model/wfs_ow_paper/NEW26_subfN90open_Nbest_pre_third.ckpt')
-    parser.add_argument ('--test_path', required=False, default=HOME + '/datasets/wfs_ow_test_paper.npz')
+    parser.add_argument ('--data_root', required=False, default=HOME)
+    parser.add_argument ('--model_root', required=False, default=HOME)
+    parser.add_argument ('--model_path', required=False, default='/ssl_saved_model/wfs_ow_paper/NEW26_subfN90open_Nbest_pre_third.ckpt')
+    parser.add_argument ('--test_path', required=False, default='/datasets/wfs_ow_test_paper.npz')
     parser.add_argument ('--man_reg', required=False, default=False)
     args = parser.parse_args ()
     main(args)

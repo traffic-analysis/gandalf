@@ -122,7 +122,7 @@ def main(args):
         with tf.name_scope("DataPreprocess"):
             num_subpage = 96  # 100
             dim = 5000  # 3969#784
-            subf_data = np.load(HOME+'/datasets/gdlf25_ipd.npz', allow_pickle=True)
+            subf_data = np.load(args.data_root+'/datasets/gdlf25_ipd.npz', allow_pickle=True)
 
             all_x = subf_data['X']
             all_suby = subf_data['suby']
@@ -141,7 +141,7 @@ def main(args):
             def reshape_and_scale(x, img_shape=(-1, dim, 1)):
                 return x.reshape(img_shape).astype(np.float32)
 
-            awf_data = np.load(HOME+'/datasets/awf1_ipd.npz', allow_pickle=True)
+            awf_data = np.load(args.data_root+'/datasets/awf1_ipd.npz', allow_pickle=True)
             train_x_unlabeled = awf_data['X']
             train_y_unlabeled = awf_data['y']
 
@@ -374,6 +374,7 @@ if __name__ == "__main__":
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=20)
     parser.add_argument ('--num_subpages', required=False, default=2)
+    parser.add_argument ('--data_root', required=False, default=HOME)
     parser.add_argument ('--man_reg', required=False, default=True)
     args = parser.parse_args ()
     for run in range(10):

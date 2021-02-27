@@ -114,7 +114,7 @@ def main(args):
         with tf.name_scope ("DataPreprocess"):
             dim = 5000  # 3969#784
 
-            df_data = np.load (HOME+'/datasets/df_fast.npz')
+            df_data = np.load (args.data_root+'/datasets/df_fast.npz')
             train_x = df_data['train_x']
             train_y = df_data['train_y']
             test_x_data = df_data['test_x']
@@ -128,7 +128,7 @@ def main(args):
             test_x_data = reshape_and_scale (test_x_data)
 
             # Use AWF2 for unlabled set
-            awf_data2 = np.load (HOME+'/datasets/awf2.npz', allow_pickle=True)
+            awf_data2 = np.load (args.data_root+'/datasets/awf2.npz', allow_pickle=True)
 
             train_x_unlabeled = awf_data2['data']
             train_y_unlabeled = awf_data2['labels']
@@ -343,6 +343,7 @@ if __name__ == "__main__":
     parser.add_argument ('--num_classes', required=False, default=95)
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=90)
+    parser.add_argument ('--data_root', required=False, default=HOME)
     parser.add_argument ('--man_reg', required=False, default=True)
     args = parser.parse_args ()
     for run in range (5):

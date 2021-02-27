@@ -132,7 +132,7 @@ def main(args):
         print("Input data preprocessing...")
         with tf.name_scope("DataPreprocess"):
             dim = 5000
-            subf_data = np.load(HOME+'/datasets/gdlf25_ipd.npz', allow_pickle=True)
+            subf_data = np.load(args.data_root+'/datasets/gdlf25_ipd.npz', allow_pickle=True)
             all_x = subf_data['X']
             all_y = subf_data['y']
 
@@ -144,7 +144,7 @@ def main(args):
             all_x = np.array(new_all_x)
             mon_x = all_x
             mon_y = all_y
-            subf_data_unmonitored = np.load(HOME+'/datasets/gdlf_ow_ipd.npz', allow_pickle=True)
+            subf_data_unmonitored = np.load(args.data_root+'/datasets/gdlf_ow_ipd.npz', allow_pickle=True)
             unmon_x = subf_data_unmonitored['X']
             unmon_y = np.array([0]*len(unmon_x))
 
@@ -154,11 +154,11 @@ def main(args):
             def reshape_and_scale(x, img_shape=(-1, dim, 1)):
                 return x.reshape(img_shape).astype(
                     np.float32)
-            awf_data = np.load(HOME+'/datasets/awf1_ipd.npz', allow_pickle=True)
+            awf_data = np.load(args.data_root+'/datasets/awf1_ipd.npz', allow_pickle=True)
             train_x_unlabeled = awf_data['X']
             train_y_unlabeled = awf_data['y']
 
-            awf_data = np.load(HOME+'/datasets/gdlf25_ow_old_ipd.npz', allow_pickle=True)
+            awf_data = np.load(args.data_root+'/datasets/gdlf25_ow_old_ipd.npz', allow_pickle=True)
             awf_x_unlabeled = awf_data['X']
             awf_y_unlabeled = np.array([0] * len(awf_x_unlabeled))
 
@@ -206,7 +206,7 @@ def main(args):
             train_y_unlabeled_data = train_y_unlabeled#np.concatenate(train_y_unlabeled)
 
             # save testing set for the testing phase
-            np.savez_compressed(HOME+'/datasets/wfs-ow-awf-gdow.npz', X=test_x_data, y=test_y_data)
+            np.savez_compressed(args.data_root+'/datasets/wfs-ow-awf-gdow.npz', X=test_x_data, y=test_y_data)
             print('test_x_data',test_x_data.shape)
             print('train_x_labeled_data', train_x_labeled_data.shape)
 
@@ -379,7 +379,7 @@ def main(args):
                 if (epoch != 0) and (precision > 0.79) and (precision > best_pre):
                     best_pre = precision
                     print ('saving...')
-                    saver.save (sess, HOME+"/ssl_saved_model/wfs-ow" + str (precision) + ".ckpt")
+                    saver.save (sess, args.model_root+"/ssl_saved_model/wfs-ow" + str (precision) + ".ckpt")
                     print ('saved')
 
 
@@ -411,6 +411,8 @@ if __name__ == "__main__":
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=90)
     parser.add_argument ('--test_unmon', required=False, default=70000)
+    parser.add_argument ('--data_root', required=False, default=HOME)
+    parser.add_argument ('--model_root', required=False, default=HOME)
     parser.add_argument ('--man_reg', required=False, default=True)
     args = parser.parse_args ()
     for run in range(2):

@@ -113,7 +113,7 @@ def main(args):
         with tf.name_scope ("DataPreprocess"):
             dim = 5000
 
-            df_data = np.load (HOME+'/datasets/df_circuit.npz')
+            df_data = np.load (args.data_root+'/datasets/df_circuit.npz')
             all_x = df_data['X']
             all_y = df_data['y']
             all_c = df_data['circuit']
@@ -160,7 +160,7 @@ def main(args):
             test_x_data = reshape_and_scale (test_x_data)
 
             # Use AWF2 for unlabled set
-            awf_data2 = np.load (HOME+'/datasets/awf2.npz', allow_pickle=True)
+            awf_data2 = np.load (args.data_root+'/datasets/awf2.npz', allow_pickle=True)
 
             train_x_unlabeled = awf_data2['data']
             train_y_unlabeled = awf_data2['labels']
@@ -374,6 +374,7 @@ if __name__ == "__main__":
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=25)
     parser.add_argument ('--num_train_circuits', required=False, default=1)  # 1, 5, 20, 40
+    parser.add_argument ('--data_root', required=False, default=HOME)
     parser.add_argument ('--man_reg', required=False, default=True)
     args = parser.parse_args ()
     for run in range (5):

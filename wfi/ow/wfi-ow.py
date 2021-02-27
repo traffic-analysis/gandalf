@@ -168,11 +168,11 @@ def main(args):
             test_x_data = reshape_and_scale(test_x_data)
 
             # save testing set for the testing phase
-            np.savez_compressed(HOME + '/datasets/wfi-ow-test.npz', X=test_x_data, y=test_y_data)  # new_open_subf_test_unmon'+str(args.test_unmon)+'_batch16_3.npz'
+            np.savez_compressed(args.data_root + '/datasets/wfi-ow-test.npz', X=test_x_data, y=test_y_data)  # new_open_subf_test_unmon'+str(args.test_unmon)+'_batch16_3.npz'
             print('test_x_data', test_x_data.shape)
 
             #awf_data2 = np.load('/data/website-fingerprinting/datasets/re_tor_200w_2500tr.npz', allow_pickle=True)
-            awf_data2 = np.load (HOME + '/datasets/awf2.npz', allow_pickle=True)
+            awf_data2 = np.load (args.data_root + '/datasets/awf2.npz', allow_pickle=True)
 
             train_x_unlabeled = awf_data2['data']
             awf2_y = awf_data2['labels']
@@ -431,7 +431,7 @@ def main(args):
                         if best_pre > 0.39:
                             print('saving...')
                             save_path = saver.save(sess,
-                                                   HOME+"/ssl_saved_model/wfi-ow-pre"+str(precision)+".ckpt")
+                                                   args.model_root+"/ssl_saved_model/wfi-ow-pre"+str(precision)+".ckpt")
                             print('saved')
 
 
@@ -452,12 +452,12 @@ def split_awf(r_train, r_test, nClass, mon_instance, unmon_instance, dim, b_labe
         print("It's binary classification!!!")
 
     #mon_data = np.load('/data/seoh/re_tor_100w_2498tr.npz', allow_pickle=True)
-    mon_data = np.load (HOME + '/datasets/awf1.npz', allow_pickle=True)
+    mon_data = np.load (args.data_root + '/datasets/awf1.npz', allow_pickle=True)
     mon_x = mon_data['feature']
     mon_y = mon_data['label']
 
     #unmon_data = np.load('/data/website-fingerprinting/datasets/tor_open_400000w.npz', allow_pickle=True)
-    unmon_data = np.load (HOME + '/datasets/tor_open_400000w.npz', allow_pickle=True)
+    unmon_data = np.load (args.data_root + '/datasets/tor_open_400000w.npz', allow_pickle=True)
     unmon_x = unmon_data['data']
 
     ## We need to uniformly random selection over each monitored class
@@ -589,6 +589,8 @@ if __name__ == "__main__":
     parser.add_argument ('--num_classes', required=False, default=101)
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=20)
+    parser.add_argument ('--data_root', required=False, default=HOME)
+    parser.add_argument ('--model_root', required=False, default=HOME)
     parser.add_argument ('--man_reg', required=False, default=False)
     args = parser.parse_args ()
     main(args)

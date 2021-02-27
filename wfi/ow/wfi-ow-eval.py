@@ -183,11 +183,11 @@ def main(args):
         best_tpr = 0.
         saver = tf.train.Saver()
         with tf.Session() as sess:
-            saver.restore (sess, save_path=args.model_path)
+            saver.restore (sess, save_path=args.model_root + args.model_path)
             #saver.restore(sess,save_path='/data/seoh/ssl_saved_model/NEWWF20open_pre_1d_epoch102_tpr0.82_pre0.48.ckpt') # WF optimized model
 
             #test = np.load('/data/seoh/ow_wf_test.npz',allow_pickle=True)
-            test = np.load (args.test_path, allow_pickle=True)
+            test = np.load (args.data_root + args.test_path, allow_pickle=True)
 
             #test_x_data = reshape_and_scale(test['x'])
             test_x_data = reshape_and_scale(test['X'])
@@ -393,8 +393,10 @@ if __name__ == "__main__":
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=20)
     parser.add_argument ('--back_size', required=False, default=360000)
-    parser.add_argument ('--model_path', required=False, default=HOME + '/ssl_saved_model/wfi_ow_paper/NEWWF20open_pre_1d_epoch102_tpr0.82_pre0.48.ckpt')
-    parser.add_argument ('--test_path', required=False, default=HOME + '/datasets/ow_wf_test_compressed.npz')
+    parser.add_argument ('--data_root', required=False, default=HOME)
+    parser.add_argument ('--model_root', required=False, default=HOME)
+    parser.add_argument ('--model_path', required=False, default='/ssl_saved_model/wfi_ow_paper/NEWWF20open_pre_1d_epoch102_tpr0.82_pre0.48.ckpt')
+    parser.add_argument ('--test_path', required=False, default='/datasets/ow_wf_test_compressed.npz')
     parser.add_argument ('--man_reg', required=False, default=False)
     args = parser.parse_args ()
     main(args)
