@@ -274,10 +274,10 @@ def split_awf(r_train, r_test, nClass, mon_instance, unmon_instance, dim, b_labe
     if b_label:
         print("It's binary classification!!!")
 
-    mon_data = np.load(HOME+'/datasets/awf1.npz', allow_pickle=True)
+    mon_data = np.load(args.data_root+'/datasets/awf1.npz', allow_pickle=True)
     mon_x = mon_data['feature']
 
-    unmon_data = np.load(HOME+'/datasets/tor_open_400000w.npz', allow_pickle=True)
+    unmon_data = np.load(args.data_root+'/datasets/tor_open_400000w.npz', allow_pickle=True)
     unmon_x = unmon_data['data']
 
     ## We need to uniformly random selection over each monitored class

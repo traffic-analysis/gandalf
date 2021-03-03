@@ -124,7 +124,7 @@ def main(args):
             test_x_data = reshape_and_scale(test_x_data)
 
             # Use DF for unlabled set
-            awf_data2 = np.load(HOME+'/datasets/df_data.npz', allow_pickle=True) # data, labels
+            awf_data2 = np.load(args.data_root+'/datasets/df_data.npz', allow_pickle=True) # data, labels
 
             train_x_unlabeled = awf_data2['data']
             train_y_unlabeled = awf_data2['labels']
@@ -309,7 +309,7 @@ def main(args):
 
 def split_awf_closed(r_train, r_test, nClass, mon_instance, unmon_instance, dim):
 
-    mon_data = np.load(HOME+'/datasets/awf1.npz', allow_pickle=True)
+    mon_data = np.load(args.data_root+'/datasets/awf1.npz', allow_pickle=True)
     mon_x = mon_data['feature']
 
 
@@ -400,6 +400,7 @@ if __name__ == "__main__":
     parser.add_argument ('--num_classes', required=False, default=100)
     parser.add_argument ('--z_dim_size', required=False, default=100)
     parser.add_argument ('--num_labeled_examples', required=False, default=20)
+    parser.add_argument ('--data_root', required=False, default=HOME)
     parser.add_argument ('--man_reg', required=False, default=True)
     args = parser.parse_args ()
     for i in range(10):

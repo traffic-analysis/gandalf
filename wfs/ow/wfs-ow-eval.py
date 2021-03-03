@@ -127,7 +127,7 @@ def main(args):
         print("Input data preprocessing...")
         with tf.name_scope("DataPreprocess"):
             dim = 5000
-            subf_data = np.load(HOME+'/datasets/gdlf25_ipd.npz', allow_pickle=True)
+            subf_data = np.load(args.data_root+'/datasets/gdlf25_ipd.npz', allow_pickle=True)
 
             all_x = subf_data['X']
             all_y = subf_data['y']
