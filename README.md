@@ -83,13 +83,9 @@ Then, you are ready to execute the following codes.
 
 The following codes first preprocess the input data including building labeled and unlabeled data as well as splitting them into training and testing sets. Then, they build the network to have the generator and discriminator followed by building the loss functions for the discriminator and generator. Note that the discriminator is trained using both supervised loss (i.e., categorical cross entropy) and unsupervised loss while the generator is trained using the feature matching loss computing MAE (or MSE) between fake and real traces. Finally both models are trained using two optimizers (i.e., Adam) and the trained model is evaluated using the testing set. For OW, we provide separate evaluation code. For more details regarding the code execution and data, refer to the following links: 
 
-### WF-I closed-world experiments ([wfi/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfi#cw-experiments-using-510205090-instances))
+### WF-I experiments ([wfi/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfi))
 
-### WF-I open-world experiments ([wfi/ow](https://github.com/traffic-analysis/gandalf/tree/main/wfi#ow-training-using-20-instances))
-
-### WF-S closed-world experiments ([wfs/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfs#cw-experiments-using-510205090-instances))
-
-### WF-S open-world experiments ([wfs/ow](https://github.com/traffic-analysis/gandalf/tree/main/wfs#ow-training-using-90-instances))
+### WF-S experiments ([wfs/cw](https://github.com/traffic-analysis/gandalf/tree/main/wfs))
 
 ## Acknowledgments and References
 
