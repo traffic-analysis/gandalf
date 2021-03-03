@@ -39,13 +39,13 @@ We used python3, cuda10, cudnn7.6.4
 Install venv:
 
 ```sh
-python3 -m venv ~/gdlf_env
+python3 -m venv gdlf_env
 ```
 
 Install prerequisite:
 
 ```sh
-source ~/gdlf_env/bin/activate
+source gdlf_env/bin/activate
 pip install -r requirements.txt
 deactivate
 ```
@@ -71,6 +71,12 @@ Clone github repository:
 
 ```sh
 git clone https://github.com/traffic-analysis/gandalf.git
+```
+
+Run venv:
+
+```sh
+source gdlf_env/bin/activate
 ```
 
 Then, you are ready to execute the following codes.
